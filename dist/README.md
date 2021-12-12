@@ -1,8 +1,8 @@
-# title
+# Project 1
 
 ## Description 
 
-title description
+desc
 
 ## Table of Contents (Optional)
 
@@ -17,19 +17,19 @@ title description
 
 ## Installation
 
-
+install
 
 ## Usage
 
-
+na
 
 ## Credits
 
-
+na
 
 ## License
 
-
+MIT License, GNU GPLv3, Apache License
 
 ## Badges
 

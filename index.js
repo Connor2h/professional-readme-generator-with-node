@@ -55,6 +55,12 @@ const promptProject = (questions) => {
             type: 'input',
             name: 'credits',
             message: 'Please List your collaborators, if any, with links to their GitHub profiles.',
+        },
+        {
+            type: 'checkbox',
+            name: 'license',
+            message: 'Which licenses did you use? (Check all that apply)',
+            choices: ['MIT License', 'GNU GPLv3', 'Apache License']
         }
     ]).then(projectData => {
         //console.log(projectData)
