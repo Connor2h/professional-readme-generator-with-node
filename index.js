@@ -78,7 +78,7 @@ const promptProject = (questions) => {
 //function writeToFile(fileName, data) {}
 const writeFile = (fileContent, project) => {
     return new Promise((resolve, reject) => {
-        fs.writeFile(`./dist/README.md`, fileContent, err => {
+        fs.writeFile(`./dist/${project[0].projectTitle}.md`, fileContent, err => {
         // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
             if (err) {
                 reject(err);
@@ -101,17 +101,7 @@ function init() {}
 // Function call to initialize app
 promptProject()
     .then(questions => {
-        return generateMarkdown(questions)
-    })
-    .then((pageMark, questions) => {
-        console.log(questions);
+        let pageMark = generateMarkdown(questions)
         return writeFile(pageMark,questions);
     })
-;
-
-
-
-
-
-
 //init();
