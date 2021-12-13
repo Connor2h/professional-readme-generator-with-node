@@ -74,6 +74,19 @@ const promptProject = (questions) => {
                     return false;
                 }
             }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Enter your email',
+            validate: email => {
+                if(email){
+                    return true
+                }else{
+                    console.log('Please enter your email!');
+                    return false;
+                }
+            }
         }
     ]).then(projectData => {
         //console.log(projectData)

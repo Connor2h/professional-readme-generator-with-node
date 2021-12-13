@@ -9,9 +9,8 @@ function renderLicenseBadge(license) {
 function renderLicenseLink(license) {
   if(!license){
     return ``
-  }else if(license[0] === 'MIT License' && license[1] === 'GNU GPLv3' && license[2] === 'Apache License'){
-    return `${license.join(' || ')}`
   }
+  return 
 }
 
 // TODO: Create a function that returns the license section of README
@@ -33,16 +32,16 @@ function generateMarkdown(data) {
 
 ${data[0].description}
 
-## Table of Contents (Optional)
+## Table of Contents
 
-* Installation
-* Usage
-* Credits
-* License
-* Badges
-* Features
-* Contributing
-* Tests
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
+* [License](#license)
+* [Badges](#badges)
+* [Features](#features)
+* [Contributing](#contributing)
+* [Tests](#tests)
 
 ## Installation
 
@@ -70,11 +69,17 @@ ${renderLicenseSection(data[0].license)}
 
 ## Contributing
 
+If you would like to contribute, then checkout the link below
+https://www.contributor-covenant.org/
+
+## Questions
+
 Github Profile: https://github.com/${data[0].github}
+If you have additional questions then you can email me here: <${data[0].email}>
 
 ## Tests
 
-
+Go the extra mile and write tests for your application. Then provide examples on how to run them.
 
 `;
 }
