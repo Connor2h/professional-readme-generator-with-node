@@ -70,7 +70,7 @@ ${renderLicenseSection(data[0].license)}
 
 ## Contributing
 
-
+Github Profile: https://github.com/${data[0].github}
 
 ## Tests
 

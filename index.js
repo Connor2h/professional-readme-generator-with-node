@@ -61,6 +61,19 @@ const promptProject = (questions) => {
             name: 'license',
             message: 'Which licenses did you use? (Check all that apply)',
             choices: ['MIT License', 'GNU GPLv3', 'Apache License']
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'Enter your GitHub Username',
+            validate: github => {
+                if(github){
+                    return true
+                }else{
+                    console.log('Please enter your Github!');
+                    return false;
+                }
+            }
         }
     ]).then(projectData => {
         //console.log(projectData)
