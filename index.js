@@ -2,12 +2,10 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-var holder;
-
 const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
-const questions = [];
+//const questions = [];
 
 const promptProject = (questions) => {
     if (!questions) {
@@ -31,7 +29,7 @@ const promptProject = (questions) => {
         {
             type: 'input',
             name: 'description',
-            message: 'Please give a description of your project. (Required)',
+            message: 'Please give a short description of your project. (Required)',
             validate: name => {
                 if(name){
                     return true
@@ -44,7 +42,12 @@ const promptProject = (questions) => {
         {
             type: 'input',
             name: 'installation',
-            message: 'What are the steps required to install your project?',
+            message: 'What command should be run to install dependencies?',
+        },
+        {
+            type: 'input',
+            name: 'tests',
+            message: 'What command should be run to run tests?',
         },
         {
             type: 'input',
@@ -59,13 +62,13 @@ const promptProject = (questions) => {
         {
             type: 'checkbox',
             name: 'license',
-            message: 'Which licenses did you use? (Check all that apply)',
-            choices: ['MIT License', 'GNU GPLv3', 'Apache License']
+            message: 'What kind of license should your project have? (CHECK ONLY ONE)',
+            choices: ['MIT License', 'GNU GPLv3', 'Apache License', 'none']
         },
         {
             type: 'input',
             name: 'github',
-            message: 'Enter your GitHub Username',
+            message: 'What is your GitHub Username',
             validate: github => {
                 if(github){
                     return true
@@ -78,7 +81,7 @@ const promptProject = (questions) => {
         {
             type: 'input',
             name: 'email',
-            message: 'Enter your email',
+            message: 'What is your email address',
             validate: email => {
                 if(email){
                     return true
@@ -102,9 +105,9 @@ const promptProject = (questions) => {
 
 // TODO: Create a function to write README file
 //function writeToFile(fileName, data) {}
-const writeFile = (fileContent, project) => {
+const writeFile = (pageMark, project) => {
     return new Promise((resolve, reject) => {
-        fs.writeFile(`./dist/${project[0].projectTitle}.md`, fileContent, err => {
+        fs.writeFile(`./dist/${project[0].projectTitle}.md`, pageMark, err => {
         // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
             if (err) {
                 reject(err);
@@ -122,12 +125,14 @@ const writeFile = (fileContent, project) => {
 };
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
 
-// Function call to initialize app
-promptProject()
+    promptProject()
     .then(questions => {
         let pageMark = generateMarkdown(questions)
         return writeFile(pageMark,questions);
     })
-//init();
+
+}
+
+init();
