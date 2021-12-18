@@ -128,9 +128,9 @@ const writeFile = (pageMark, project) => {
 function init() {
 
     promptProject()
-    .then(questions => {
-        let pageMark = generateMarkdown(questions)
-        return writeFile(pageMark,questions);
+        .then(questions => {
+            let pageMark = generateMarkdown(questions)
+            return writeFile(pageMark,questions);
     })
 
 }
